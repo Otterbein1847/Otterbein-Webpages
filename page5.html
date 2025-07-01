@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>💌 You Have a New Love Note</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: #ed5848;
+      color: #333;
+      padding: 40px;
+      max-width: 750px;
+      margin: auto;
+      text-align: center;
+    }
+    .fake-top {
+      background-color: #fef2dc;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .fake-top h1 {
+      color: #f06292;
+    }
+    .open-button {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      background: #ff6f61;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      animation: flicker 1.5s infinite;
+      text-decoration: none;
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .reveal {
+      margin-top: 40px;
+      padding: 30px;
+      background-color: #ffffff;
+      border: 2px dashed #fba9a9;
+      border-radius: 15px;
+    }
+    .reveal h2 {
+      color: #d72638;
+    }
+    .meme img {
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .meme p {
+      font-style: italic;
+      margin-top: 20px;
+      color: #b83250;
+    }
+    .tips {
+      margin-top: 30px;
+      text-align: left;
+      background: #fdf2f0;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .tips ul {
+      padding-left: 20px;
+    }
+    .tips code {
+      background-color: #ffe9c8;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="fake-top">
+    <h1>💌 You Have a Secret Admirer!</h1>
+    <p>Someone just sent you a love confession 😳</p>
+    <a href="#reveal" class="open-button" onclick="phishAlert()">Open the Love Note 💘</a>
+  </div>
+
+  <div class="reveal" id="reveal">
+    <h2>🚨 Gotcha! This was a phishing test.</h2>
+    <p>You didn’t actually click on malware — but you *could have.*</p>
+
+    <div class="meme">
+      <p>“This isn’t romance — it’s ransomware. 💘➡️💻💀”</p>
+    </div>
+
+    <div class="tips">
+      <h3>🔐 How to Protect Yourself from Phishing:</h3>
+      <ul>
+        <li><strong>Pause before clicking:</strong> Unexpected or emotional messages are designed to rush you — take a moment to think.</li>
+        <li><strong>Verify the sender:</strong> Check the email address carefully. Scammers often impersonate trusted organizations with subtle typos.</li>
+        <li><strong>Hover over links:</strong> Before you click, hover to preview the actual URL. If it looks suspicious or unrelated — don’t click.</li>
+        <li><strong>Don’t download unknown files:</strong> Attachments with extensions like <code>.exe</code>, <code>.zip</code>, or <code>.scr</code> can be dangerous.</li>
+        <li><strong>Watch for urgency or threats:</strong> “Act now” language is a red flag — legitimate institutions don’t use scare tactics.</li>
+        <li><strong>Use MFA (multi-factor authentication):</strong> Even if your password is compromised, MFA adds a second line of defense.</li>
+        <li><strong>Report suspicious emails:</strong> Don’t delete it — report it using <img src="Images/PhishAlert.png" alt="Phish Alert Button" style="max-width: 340%; height: auto; margin-top: 10px;">
+          <p>If you're still unsure or need further assistance, don't hesitate to contact the ITS Help Desk for support.</p></li>
+      </ul>
+      <p><strong>💡 Pro Tip:</strong> Real love might make your heart race, but sketchy links make your computer cry.</p>
+    </div>
+  </div>
+
+  <audio id="heartbreak-sound" src="https://www.myinstants.com/media/sounds/sad-violin.mp3"></audio>
+
+  <script>
+    function phishAlert() {
+      const messages = [
+        "💀 You just got phished… And your crush still doesn’t know you exist 😔",
+        "🚨 Phished! But hey, at least it wasn’t malware. Or heartbreak. Or was it?",
+        "😬 No love note. Just a lesson.",
+        "💔 Plot twist: Your crush was a bot.",
+        "😵 You fell for it. Cupid’s been hacked!"
+      ];
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+
+      alert(randomMsg);
+
+      const sound = document.getElementById('heartbreak-sound');
+      if (sound) sound.play().catch(() => {});
+
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+  </script>
+</body>
+</html>

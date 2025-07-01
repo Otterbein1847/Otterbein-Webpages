@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>☠️ Link Regret Department</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 60px 20px;
+      background-color: #1A1410;
+      color: #FDF4DC;
+      font-family: 'Rubik', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #E6B54E;
+      margin-bottom: 20px;
+      animation: pop 0.6s ease-out;
+    }
+
+    .subheader {
+      color: #C8A483;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: #2D211B;
+      padding: 30px 25px;
+      border-radius: 16px;
+      border: 2px dashed #E6B54E;
+      max-width: 700px;
+      box-shadow: 0 0 20px rgba(230, 181, 78, 0.15);
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .real-tips {
+      background: #1A1410;
+      color: #FF5C77;
+      font-size: 0.95rem;
+      border: 1px solid #FF5C77;
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .real-tips strong {
+      color: #FFC9D1;
+    }
+
+    .emoji {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      margin-top: 30px;
+      background: #E6B54E;
+      color: #000;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #CF9333;
+    }
+
+    #reboot-message {
+      margin-top: 30px;
+      font-size: 1.1rem;
+      color: #F25050;
+      animation: blink 1.2s infinite;
+      display: none;
+    }
+
+    #scan-box {
+      background: #1A1410;
+      border: 1px solid #C8A483;
+      border-radius: 8px;
+      margin-top: 20px;
+      padding: 15px;
+      text-align: left;
+      color: #FDF4DC;
+      font-family: monospace;
+      width: 100%;
+      max-width: 600px;
+      display: none;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay>
+    <source src="https://cdn.pixabay.com/audio/2023/03/10/audio_8b92dfcc03.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="emoji">🕵️‍♀️</div>
+  <h1>Link Regret Department</h1>
+  <h2>You Fall for a Phishing attempt 😓</h2>
+  <div class="subheader">You clicked the thing. We saw the thing. It’s not a good thing.</div>
+
+  <div class="card">
+    <p><strong>This was a test.</strong> But in a real scenario, your data could’ve been halfway to a black market spreadsheet by now.</p>
+
+    <p>Here’s how to stay sharp and unscammed 👇</p>
+
+    <div class="real-tips">
+      <strong>🎣 Anti-Phishing Tips:</strong><br>
+      • Don’t trust email display names — check the full address.<br>
+      • Hover over links before clicking. If it points to “phishme.biz.ru”, maybe don’t.<br>
+      • Avoid panic — scammers love urgency. Take a breath.<br>
+      • If you suspect an email might be a phishing attempt, please click the Phish Alert button in your Outlook (see image below) to report it.
+        <br><img src="Images/PhishAlert.png" alt="Phish Alert Button" style="max-width: 100%; height: auto; margin-top: 10px;">
+        <p>If you're still unsure or need further assistance, ask IT. We don’t bite (usually).</p>
+    </div>
+
+    <p style="margin-top: 25px;">Remember: <em>It's not paranoia if they're actually after your passwords.</em></p>
+
+    <button class="btn" onclick="triggerFakeReboot()">Reset Your Life (or at least this page)</button>
+
+    <div id="reboot-message">💾 System Reboot in Progress... Please do not power off your soul.</div>
+
+    <div id="scan-box"></div>
+  </div>
+
+  <script>
+    function triggerFakeReboot() {
+      const msg = document.getElementById("reboot-message");
+      const scanBox = document.getElementById("scan-box");
+      msg.style.display = "block";
+      scanBox.innerHTML = "";
+      scanBox.style.display = "none";
+
+      const files = [
+        "Scanning system...",
+        "🗂️ Found: Homework_2022_FINALfinalREALLYfinal.docx",
+        "🗂️ Found: suspicious_cat_pictures.zip",
+        "🗂️ Found: definitelyNotPasswords.xlsx",
+        "🗂️ Found: zoom_meeting_notes_but_its_just_memes.pptx",
+        "⚙️ Running sarcasm.exe...",
+        "✅ System secure. But your naming conventions need work."
+      ];
+
+      setTimeout(() => {
+        msg.style.display = "none";
+        scanBox.style.display = "block";
+
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < files.length) {
+            scanBox.innerHTML += files[index] + "<br>";
+            index++;
+          } else {
+            clearInterval(interval);
+          }
+        }, 700);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

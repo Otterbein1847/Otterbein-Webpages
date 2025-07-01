@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>⚠️ Your Otterbein Account Will Be Terminated</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background-color: black;
+      color: #00ff00;
+      overflow: hidden;
+    }
+
+    .matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif') center center / cover no-repeat;
+      opacity: 0.2;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      padding: 50px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #ff0000;
+      text-shadow: 0 0 10px #ff0000;
+      animation: flicker 2s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .terminal-box {
+      background-color: rgba(0, 0, 0, 0.85);
+      border: 1px solid #00ff00;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px #00ff00;
+    }
+
+    #progressBar {
+      width: 100%;
+      background-color: #333;
+      border: 1px solid #00ff00;
+      margin-top: 10px;
+    }
+
+    #bar {
+      width: 0%;
+      height: 25px;
+      background-color: #00ff00;
+      text-align: center;
+      line-height: 25px;
+      color: black;
+      font-weight: bold;
+    }
+
+    .countdown {
+      font-size: 1.2em;
+      margin-top: 10px;
+      color: #ff5555;
+    }
+
+    button {
+      background-color: #000;
+      color: #00ff00;
+      border: 2px solid #00ff00;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #00ff00;
+      color: black;
+    }
+
+    .tip {
+      margin-top: 30px;
+      color: #33ff33;
+      display: none;
+    }
+
+    #job-tip {
+      color: #ff9900;
+      margin-top: 10px;
+    }
+
+    .flash {
+      animation: flash 0.3s 3;
+    }
+
+    @keyframes flash {
+      0% { background-color: black; }
+      50% { background-color: red; }
+      100% { background-color: black; }
+    }
+  </style>
+</head>
+<body>
+  <div class="matrix-bg"></div>
+  <div class="container">
+    <h1 id="main-title">⚠️ Your Otterbein Account Will Be Terminated</h1>
+    <div class="terminal-box">
+      <p><strong>IP Address Detected:</strong> <span id="user-ip">Fetching...</span></p>
+      <p><strong>Status:</strong> Unauthorized login detected. Account flagged for immediate deletion.</p>
+      <p><strong>Reason:</strong> Violation of terms via suspicious job offer email access.</p>
+      <div id="progressBar">
+        <div id="bar">0%</div>
+      </div>
+      <div class="countdown">
+        Auto-Termination In: <span id="timer">10</span> seconds...
+      </div>
+    </div>
+
+    <button id="verifyBtn">
+      🛑 STOP ACCOUNT TERMINATION
+    </button>
+
+    <div class="tip" id="all-tips">
+      🧠 <strong>Phishing Tip:</strong><br>
+      Scammers often threaten to delete your account or offer fake jobs to make you panic-click. Real companies won’t rush you with timers or demand urgent logins. Breathe. Think. Then delete.
+      <ul>
+        <li>✅ Always hover over links to preview the real destination.</li>
+        <li>📧 Double-check email addresses — not just the display name.</li>
+        <li>⏳ Don’t fall for urgency: legit organizations don’t use countdowns.</li>
+        <li>🔒 Never enter personal info on suspicious-looking pages.</li>
+        <li>🕵️‍♀️ If you suspect an email might be a phishing attempt, please click the Phish Alert button in your Outlook (see image below) to report it.<br>
+          <img src="Images/PhishAlert.png" alt="Phish Alert Button" style="max-width: 100%; height: auto; margin-top: 10px;">
+          <p>If you're still unsure or need further assistance, don't hesitate to contact the ITS Help Desk for support.</p>
+        </li>
+      </ul>
+      <p id="job-tip">
+        💼 <strong>Bonus Tip:</strong> Be careful about job offers — especially the ones that claim to pay <strong>$90 an hour</strong> for minimal work. If it sounds too good to be true, it probably is.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // IP Fetch
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('user-ip').textContent = data.ip;
+      })
+      .catch(() => {
+        document.getElementById('user-ip').textContent = "Unavailable";
+      });
+
+    // Timer + Progress Bar
+    let seconds = 10;
+    let width = 0;
+    let timerDisplay = document.getElementById("timer");
+    let bar = document.getElementById("bar");
+    let mainTitle = document.getElementById("main-title");
+    let verifyBtn = document.getElementById("verifyBtn");
+
+    let countdownInterval, progressInterval;
+    let terminated = false;
+
+    function showTips() {
+      document.getElementById("all-tips").style.display = "block";
+    }
+
+    function startCountdown() {
+      countdownInterval = setInterval(() => {
+        seconds--;
+        timerDisplay.textContent = seconds;
+        if (seconds <= 0) {
+          clearInterval(countdownInterval);
+          clearInterval(progressInterval);
+          timerDisplay.textContent = "TERMINATED";
+          document.title = "💀 YOU GOT PHISHED!";
+          mainTitle.textContent = "🛑That was a Phishing Test!";
+          document.body.classList.add('flash');
+          terminated = true;
+          showTips();
+          setTimeout(() => {
+            alert("💀 You really fell for that?\n\nThis was a phishing awareness test.\nDon’t trust countdowns or urgent button prompts.");
+          }, 500);
+        }
+      }, 1000);
+
+      progressInterval = setInterval(() => {
+        width += 10;
+        bar.style.width = width + '%';
+        bar.textContent = width + '%';
+      }, 1000);
+    }
+
+    startCountdown();
+
+    verifyBtn.addEventListener("click", () => {
+      if (terminated) return;
+
+      clearInterval(countdownInterval);
+      clearInterval(progressInterval);
+      timerDisplay.textContent = "CANCELLED";
+      bar.style.width = "100%";
+      bar.textContent = "ABORTED";
+      document.title = "🟢 Nice Try...";
+      mainTitle.textContent = "💀 GOTCHA! YOU GOT PHISHED.";
+      verifyBtn.disabled = true;
+      verifyBtn.style.opacity = 0.5;
+      showTips();
+      alert("✅ You ‘stopped’ the termination... or so you think 👀\n\nThis was a phishing simulation. Stay alert next time!");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>👀 OtterEyes Antivirus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #fb3333;
+      font-family: 'Rubik', sans-serif;
+      color: #fcfcf8;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    header {
+      padding: 40px 20px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #facc15;
+    }
+
+    h2 {
+      color: #66f43f;
+      margin-top: 10px;
+    }
+
+    .card {
+      background: #1e293b;
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 700px;
+      border: 2px dashed #facc15;
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.2);
+    }
+
+    #scan-output {
+      background: #0f172a;
+      border: 1px solid #38bdf8;
+      color: #e0f2fe;
+      font-family: monospace;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .btn {
+      background: #f43f5e;
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #be123c;
+    }
+
+    #quiz {
+      display: none;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .quiz-question {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-left: 10px;
+    }
+
+    .result {
+      margin-top: 20px;
+      color: #34d399;
+      font-weight: bold;
+    }
+
+    /* White Creepy Eyes Styling */
+    .eyes {
+      position: fixed;
+      top: 5%;
+      left: 5%;
+      width: 100px;
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      z-index: 0;
+    }
+
+    .eye {
+      width: 55px;
+      height: 55px;
+      background: rgb(255, 255, 255);
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 8px #fff;
+    }
+
+    .pupil {
+      width: 25px;
+      height: 25px;
+      background: #1e293b;
+      border-radius: 50%;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      transition: all 0.05s ease-out;
+    }
+
+    @media (max-width: 600px) {
+      .eyes {
+        display: none;
+      }
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #fad500;
+      font-size: 1.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="eyes">
+    <div class="eye"><div class="pupil" id="pupil1"></div></div>
+    <div class="eye"><div class="pupil" id="pupil2"></div></div>
+  </div>
+
+  <header>
+    <h1>👀 OtterEyes Antivirus</h1>
+    <h2>This Was a Test... And You Took the Bait 🎣</h2>
+    <p>But hey, better here than in your real inbox. Let’s learn and laugh.</p>
+  </header>
+
+  <div class="card">
+    <button class="btn" onclick="runFakeScan()">Start Scan</button>
+    <div id="scan-output"></div>
+
+    <div id="quiz">
+      <h2>🧠 Post-Click Recovery Quiz: Can You Redeem Yourself?</h2>
+      <form id="quiz-form">
+        <div class="quiz-question">
+          <p>1. You get an email from “Otterbein Admin” asking for your password. What do you do?</p>
+          <label><input type="radio" name="q1" value="bad"> Trust fall into the unknown. Click it.</label>
+          <label><input type="radio" name="q1" value="good"> Hover and verify before anything.</label>
+        </div>
+        <div class="quiz-question">
+          <p>2. Pop-up: “You’ve won free OtterBuck$!”</p>
+          <label><input type="radio" name="q2" value="bad"> Must. Claim. Boba money.</label>
+          <label><input type="radio" name="q2" value="good"> Close it and report to IT.</label>
+        </div>
+        <div class="quiz-question">
+          <p>3. The email has a link with the text “Click here to update your BrightSpace access.”</p>
+          <label><input type="radio" name="q3" value="bad"> Click fast — no time to lose access!</label>
+          <label><input type="radio" name="q3" value="good"> Hover over it and check if it’s legit.</label>
+        </div>
+        <div class="quiz-question">
+          <p>4. A file named “Midterm_CheatCodes_FINAL.zip” shows up in your inbox. It’s from a classmate.</p>
+          <label><input type="radio" name="q4" value="bad"> Oh wow free help! Click.</label>
+          <label><input type="radio" name="q4" value="good"> Report it — that’s sus and sketchy.</label>
+        </div>
+        <button type="button" class="btn" onclick="checkQuiz()">Submit Answers</button>
+        <div id="quiz-result" class="result"></div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    📬 If you suspect an email might be a phishing attempt, please click the Phish Alert button in your Outlook (see image below) to report it.
+        <br><img src="Images/PhishAlert.png" alt="Phish Alert Button" style="max-width: 100%; height: auto; margin-top: 10px;">
+        <p>If you're still unsure or need further assistance, don't hesitate to contact the ITS Help Desk for support.</strong> </li>. 🦦
+  </footer>
+
+  <script>
+    // Eye tracking
+    const pupil1 = document.getElementById("pupil1");
+    const pupil2 = document.getElementById("pupil2");
+
+    document.addEventListener("mousemove", (e) => {
+      movePupil(pupil1, e);
+      movePupil(pupil2, e);
+    });
+
+    function movePupil(pupil, e) {
+      const rect = pupil.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX);
+      const radius = 10;
+      const x = radius * Math.cos(angle);
+      const y = radius * Math.sin(angle);
+      pupil.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    // Fake scan
+    const scanOutput = document.getElementById("scan-output");
+    const quiz = document.getElementById("quiz");
+    const files = [
+      "🕵️ Initiating Phishing Awareness Simulation...",
+      "🐟 You clicked a suspicious link — classic bait move.",
+      "💾 Logging files: definitely_not_malware.zip... totally_legit_offer.docx...",
+      "🧠 Running brain scan: Trust level… optimistic.",
+      "📈 Analyzing reaction speed: 🐢🕒",
+      "✅ Simulation complete: You're officially phishable (but now smarter)."
+    ];
+
+    function runFakeScan() {
+      scanOutput.innerHTML = "";
+      scanOutput.style.display = "block";
+      quiz.style.display = "none";
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i < files.length) {
+          scanOutput.innerHTML += files[i] + "<br>";
+          i++;
+        } else {
+          clearInterval(interval);
+          quiz.style.display = "block";
+        }
+      }, 900);
+    }
+
+    function checkQuiz() {
+      const answers = document.querySelectorAll('input[type="radio"]:checked');
+      let score = 0;
+      answers.forEach(a => { if (a.value === "good") score++; });
+      const result = document.getElementById("quiz-result");
+
+      if (score === 4) {
+        result.innerText = "🎉 Redemption unlocked! You’re now certified to spot most email scams in the wild.";
+      } else if (score >= 2) {
+        result.innerText = "😬 You're halfway there... just don’t click anything flashy next time.";
+      } else {
+        result.innerText = "📪 You clicked the bait *and* flunked the quiz. Please consult your inner skeptic... or the ITS Help Desk.";
+      }
+    }
+  </script>
+</body>
+</html>

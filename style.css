@@ -1,0 +1,73 @@
+/* Page 1 Styles */
+#page-one {
+    background: #C79A48;
+    font-family: 'Fredoka', sans-serif;
+    color: #1f2937;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  /* Page 2 Styles */
+  #page-two {
+    background: linear-gradient(135deg, #f87171, #fcd34d);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #1f2937;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  /* Shared Styles */
+  .banner {
+    font-size: 3rem;
+    color: #dc2626;
+    animation: flash 1s infinite;
+    text-shadow: 2px 2px #facc15;
+  }
+  
+  @keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+  }
+  
+  .gif {
+    margin-top: 20px;
+  }
+  
+  .tip, .tipbox {
+    margin-top: 30px;
+    background: #E51B24;
+    border: 4px dashed #000000;
+    padding: 25px;
+    border-radius: 55px;
+    display: inline-block;
+    box-shadow: 0px 0px 12px #ffffff;
+    font-size: 1.2rem;
+    text-align: left;
+    max-width: 700px;
+    color:#00ff33;
+  }
+  
+  .scoreboard {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #0f172a;
+    background-color: #a7f3d0;
+    border: 3px solid #10b981;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #059669;
+  }
+  
+  .prize {
+    margin-top: 20px;
+    font-size: 1.4rem;
+    background-color: #fcd34d;
+    display: inline-block;
+    padding: 15px 25px;
+    border: 3px solid #f59e0b;
+    border-radius: 55px;
+    animation: spin 2s infinite;
+  }
+  
